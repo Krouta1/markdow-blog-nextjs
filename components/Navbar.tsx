@@ -13,7 +13,7 @@ type NavbarProps = {
 
 const Navbar = ({ NavLinks }: NavbarProps) => {
   return (
-    <nav className="sticky top-0 flex h-16 items-center justify-between border-b bg-background/60 px-8 backdrop-blur">
+    <nav className="sticky top-0 z-50 flex h-16 items-center justify-between border-b bg-background/60 px-8 backdrop-blur">
       <div className="w-1/5 text-xl font-bold">Krouta&apos;s Blog</div>
       <ul className="hidden w-4/5 items-center justify-end space-x-4 md:flex">
         {NavLinks.map((link) => (

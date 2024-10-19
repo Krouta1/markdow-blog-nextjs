@@ -7,6 +7,8 @@ import remarkRehype from "remark-rehype";
 import rehypeStringify from "rehype-stringify";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeSlug from "rehype-slug";
+import rehypePrettyCode from "rehype-pretty-code";
+import { transformerCopyButton } from "@rehype-pretty/transformers";
 import fs from "fs";
 import matter from "gray-matter";
 import OnThisPage from "@/components/OnThisPage";
@@ -17,7 +19,16 @@ const BlogPostPage = async ({ params }: { params: { slug: string } }) => {
     .use(remarkRehype)
     .use(rehypeStringify)
     .use(rehypeSlug)
-    .use(rehypeAutolinkHeadings);
+    .use(rehypeAutolinkHeadings)
+    .use(rehypePrettyCode, {
+      theme: "material-theme-ocean",
+      transformers: [
+        transformerCopyButton({
+          visibility: "always",
+          feedbackDuration: 3_000,
+        }),
+      ],
+    });
 
   const filePath = `content/${params.slug}.md`;
   const fileContent = fs.readFileSync(filePath, "utf-8");

@@ -12,9 +12,12 @@ const BlogPage = () => {
         {blogItems.map((item: BlogItem) => (
           <li
             key={item.id}
-            className="w-full rounded-md border p-2 shadow-md dark:bg-gray-800 md:w-[300px]"
+            className="flex w-full flex-col items-start gap-2 rounded-md border p-2 shadow-md dark:bg-gray-800 md:w-[300px]"
           >
-            <Link href={`/blogpost/${item.slug}`} className="text-xl font-bold">
+            <Link
+              href={`/blogpost/${item.slug}`}
+              className="h-20 text-xl font-bold"
+            >
               {item.title}
             </Link>
 
