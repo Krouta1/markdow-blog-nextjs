@@ -10,6 +10,10 @@ const SiteConfig = {
       name: "About",
       url: "/about",
     },
+    {
+      name: "Blog",
+      url: "/blog",
+    },
   ],
 };
 
