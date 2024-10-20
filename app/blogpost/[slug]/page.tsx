@@ -12,6 +12,12 @@ import { transformerCopyButton } from "@rehype-pretty/transformers";
 import fs from "fs";
 import matter from "gray-matter";
 import OnThisPage from "@/components/OnThisPage";
+import { Metadata, ResolvingMetadata } from "next";
+
+type Props = {
+  params: { slug: string; title: string; description: string };
+  searchParams: { [key: string]: string | string[] | undefined };
+};
 
 const BlogPostPage = async ({ params }: { params: { slug: string } }) => {
   const processor = unified()
@@ -52,3 +58,17 @@ const BlogPostPage = async ({ params }: { params: { slug: string } }) => {
 };
 
 export default BlogPostPage;
+
+export async function generateMetadata(
+  { params, searchParams }: Props,
+  parent: ResolvingMetadata,
+): Promise<Metadata> {
+  // read route params
+  const filePath = `content/${params.slug}.md`;
+  const fileContent = fs.readFileSync(filePath, "utf-8");
+  const { data } = matter(fileContent);
+  return {
+    title: `${data.title} - ProgrammingWithHarry`,
+    description: data.description,
+  };
+}
