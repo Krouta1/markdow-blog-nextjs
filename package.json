@@ -1,5 +1,5 @@
 {
-  "name": "markdow-blog-nextjs",
+  "name": "markdown-blog-nextjs",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -35,6 +35,7 @@
     "shiki": "^1.22.0",
     "tailwind-merge": "^2.5.4",
     "tailwindcss-animate": "^1.0.7",
+    "typed.js": "^2.1.0",
     "unified": "^11.0.5"
   },
   "devDependencies": {
